@@ -49,118 +49,274 @@ const data = [
   },
   {
     teams: [
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
+      {
+        name: "BBL Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Eternal Fire",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Fire Flux Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "FUT Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
     ],
     title: "Yılın Türk Erkek Esporcusu",
   },
   {
     teams: [
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
+      {
+        name: "BBL Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Eternal Fire",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Fire Flux Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "FUT Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
     ],
     title: "Yılın Türk Kadın Esporcusu",
   },
   {
     teams: [
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
+      {
+        name: "BBL Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Eternal Fire",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Fire Flux Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "FUT Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
     ],
     title: "Yılın Türk Espor Koçu",
   },
   {
     teams: [
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
+      {
+        name: "BBL Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Eternal Fire",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Fire Flux Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "FUT Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
     ],
     title: "Yılın Çıkış Yapan Genç Türk Esporcusu",
   },
   {
     teams: [
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
+      {
+        name: "BBL Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Eternal Fire",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Fire Flux Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "FUT Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
     ],
     title: "Yılın Çıkış Yapan Türk Espor Organizasyonu",
   },
   {
     teams: [
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
+      {
+        name: "BBL Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Eternal Fire",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Fire Flux Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "FUT Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
     ],
     title: "Yılın En İyi Milli Takım Kadrosu",
   },
   {
     teams: [
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
+      {
+        name: "BBL Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Eternal Fire",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Fire Flux Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "FUT Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
     ],
     title: "Yılın Turnuva Performansı",
   },
   {
     teams: [
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
+      {
+        name: "BBL Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Eternal Fire",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Fire Flux Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "FUT Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
     ],
     title: "Yılın En Heyecan Veren Karşılaşması",
   },
   {
     teams: [
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
+      {
+        name: "BBL Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Eternal Fire",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Fire Flux Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "FUT Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
     ],
     title: "Sosyal Medyayı En İyi Kullanan Türk Espor Organizasyonu",
   },
   {
     teams: [
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
+      {
+        name: "BBL Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Eternal Fire",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Fire Flux Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "FUT Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
     ],
     title: "Yılın En İyi Merchandise Ürünü",
   },
   {
     teams: [
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
+      {
+        name: "BBL Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Eternal Fire",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Fire Flux Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "FUT Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
     ],
     title: "Yılın En İyi Takım Etkinliği",
   },
   {
     teams: [
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
+      {
+        name: "BBL Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Eternal Fire",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Fire Flux Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "FUT Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
     ],
     title: "Yılın En Büyük Başarısı",
   },
   {
     teams: [
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
-      { name: "", icon: {} },
+      {
+        name: "BBL Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Eternal Fire",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "Fire Flux Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
+      {
+        name: "FUT Esports",
+        icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
+      },
     ],
     title: "Yılın En Heyecanlandıran Türk Transfer Hamlesi",
   },
@@ -202,8 +358,9 @@ export default function Home() {
         <div className="justify-center items-start space-y-[10px]">
           {data.map(({ title }, _index) => (
             <p
-              className={`font-semibold flex items-center gap-2 opacity-50 ${
-                _index == currentIndex && " opacity-100 text-blue-500"
+              onClick={() => setCurrentIndex(_index)}
+              className={`font-semibold flex items-center gap-2 ${
+                _index == currentIndex ? " opacity-100 " : " opacity-50"
               }`}
               key={_index}
             >
@@ -221,16 +378,19 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" flex flex-col justify-between items-center gap-10">
+      <div className=" flex flex-col justify-between items-center gap-10 max-w-[650px] text-center">
         <div className="flex flex-wrap">
           <p className="font-bold text-4xl flex flex-wrap">{current.title}</p>
         </div>
 
         <div className="grid grid-cols-2 gap-16">
           {current.teams.map(({ name, icon }, index) => (
-            <div key={index} className="bg-gray-300 w-[300px] h-[300px] rounded-xl items-end overflow-hidden transition-all">
+            <div
+              key={index}
+              className="bg-gray-300 w-[300px] h-[300px] rounded-xl items-end overflow-hidden transition-all"
+            >
               {selectedItem == index && (
-                <div  className="absolute bg-black rounded-full p-2 scale-50 flex ">
+                <div className="absolute bg-black rounded-full p-2 scale-50 flex ">
                   <svg
                     // className="bg-white"
                     xmlns="http://www.w3.org/2000/svg"
