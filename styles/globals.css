@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 :root {
-  zoom: 1;
+
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
 }
 
 body {
+  zoom: 1;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
