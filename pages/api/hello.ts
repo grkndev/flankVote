@@ -12,6 +12,6 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
   const detectedIp = requestIp.getClientIp(req);
-  let isFinished = detectedIp == "5.47.35.133" ? true : false;
+  let isFinished = detectedIp == "::1" ? true : false;
   res.status(200).json({ detectedIp, isFinished });
 }
