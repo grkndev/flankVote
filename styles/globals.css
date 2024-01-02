@@ -10,7 +10,7 @@
 }
 
 body {
-  zoom: .8;
+  /* zoom: .8; */
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
