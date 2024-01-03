@@ -1,24 +1,39 @@
 import Image from "next/image";
 import { Montserrat } from "next/font/google";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { useRouter } from 'next/router'
 
 const montserrat = Montserrat({ subsets: ["latin"] });
+type Answer = {
+  questionId: number;
+  team: {
+    teamId: number;
+    name: string;
+    icon: string;
+  };
+};
 const data = [
   {
+    id: 1,
     teams: [
       {
+        teamId: 30,
         name: "BBL Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 31,
         name: "Eternal Fire",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 32,
         name: "Fire Flux Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 33,
         name: "FUT Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
@@ -26,21 +41,25 @@ const data = [
     title: "Yılın Türk Espor Organizasyonu",
   },
   {
-    icon: "",
+    id: 2,
     teams: [
       {
+        teamId: 30,
         name: "BBL Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 31,
         name: "Eternal Fire",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 32,
         name: "Fire Flux Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 33,
         name: "FUT Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
@@ -48,20 +67,25 @@ const data = [
     title: "Yılın En İyi Takımı",
   },
   {
+    id: 3,
     teams: [
       {
+        teamId: 30,
         name: "BBL Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 31,
         name: "Eternal Fire",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 32,
         name: "Fire Flux Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 33,
         name: "FUT Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
@@ -69,20 +93,25 @@ const data = [
     title: "Yılın Türk Erkek Esporcusu",
   },
   {
+    id: 4,
     teams: [
       {
+        teamId: 30,
         name: "BBL Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 31,
         name: "Eternal Fire",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 32,
         name: "Fire Flux Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 33,
         name: "FUT Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
@@ -90,20 +119,25 @@ const data = [
     title: "Yılın Türk Kadın Esporcusu",
   },
   {
+    id: 5,
     teams: [
       {
+        teamId: 30,
         name: "BBL Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 31,
         name: "Eternal Fire",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 32,
         name: "Fire Flux Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 33,
         name: "FUT Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
@@ -111,20 +145,25 @@ const data = [
     title: "Yılın Türk Espor Koçu",
   },
   {
+    id: 6,
     teams: [
       {
+        teamId: 30,
         name: "BBL Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 31,
         name: "Eternal Fire",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 32,
         name: "Fire Flux Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 33,
         name: "FUT Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
@@ -132,20 +171,25 @@ const data = [
     title: "Yılın Çıkış Yapan Genç Türk Esporcusu",
   },
   {
+    id: 7,
     teams: [
       {
+        teamId: 30,
         name: "BBL Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 31,
         name: "Eternal Fire",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 32,
         name: "Fire Flux Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 33,
         name: "FUT Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
@@ -153,20 +197,25 @@ const data = [
     title: "Yılın Çıkış Yapan Türk Espor Organizasyonu",
   },
   {
+    id: 8,
     teams: [
       {
+        teamId: 30,
         name: "BBL Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 31,
         name: "Eternal Fire",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 32,
         name: "Fire Flux Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 33,
         name: "FUT Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
@@ -174,20 +223,25 @@ const data = [
     title: "Yılın En İyi Milli Takım Kadrosu",
   },
   {
+    id: 9,
     teams: [
       {
+        teamId: 30,
         name: "BBL Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 31,
         name: "Eternal Fire",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 32,
         name: "Fire Flux Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 33,
         name: "FUT Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
@@ -195,20 +249,25 @@ const data = [
     title: "Yılın Turnuva Performansı",
   },
   {
+    id: 10,
     teams: [
       {
+        teamId: 30,
         name: "BBL Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 31,
         name: "Eternal Fire",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 32,
         name: "Fire Flux Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 33,
         name: "FUT Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
@@ -216,20 +275,25 @@ const data = [
     title: "Yılın En Heyecan Veren Karşılaşması",
   },
   {
+    id: 11,
     teams: [
       {
+        teamId: 30,
         name: "BBL Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 31,
         name: "Eternal Fire",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 32,
         name: "Fire Flux Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 33,
         name: "FUT Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
@@ -237,20 +301,25 @@ const data = [
     title: "Sosyal Medyayı En İyi Kullanan Türk Espor Organizasyonu",
   },
   {
+    id: 12,
     teams: [
       {
+        teamId: 30,
         name: "BBL Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 31,
         name: "Eternal Fire",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 32,
         name: "Fire Flux Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 33,
         name: "FUT Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
@@ -258,20 +327,25 @@ const data = [
     title: "Yılın En İyi Merchandise Ürünü",
   },
   {
+    id: 13,
     teams: [
       {
+        teamId: 30,
         name: "BBL Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 31,
         name: "Eternal Fire",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 32,
         name: "Fire Flux Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 33,
         name: "FUT Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
@@ -279,20 +353,25 @@ const data = [
     title: "Yılın En İyi Takım Etkinliği",
   },
   {
+    id: 14,
     teams: [
       {
+        teamId: 30,
         name: "BBL Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 31,
         name: "Eternal Fire",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 32,
         name: "Fire Flux Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 33,
         name: "FUT Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
@@ -300,20 +379,25 @@ const data = [
     title: "Yılın En Büyük Başarısı",
   },
   {
+    id: 15,
     teams: [
       {
+        teamId: 30,
         name: "BBL Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 31,
         name: "Eternal Fire",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 32,
         name: "Fire Flux Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
       {
+        teamId: 33,
         name: "FUT Esports",
         icon: "https://upload.wikimedia.org/wikipedia/tr/d/d4/BBL_Esports_yeni_logo.png",
       },
@@ -330,36 +414,86 @@ export async function getServerSideProps() {
   // Pass data to the page via props
   return { props: { ip: data } };
 }
+
 export default function Home({ ip }: any) {
+  const router = useRouter()
+  const [answers, setAnswers] = useState<Answer[]>([]);
   const [finished, setFinished] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [current, setCurrent] = useState(data[currentIndex]);
+
   const [selectedItem, setSelectedItem] = useState<number>();
 
-  function nextStep() {
-    setSelectedItem(undefined);
+  useEffect(() => setFinished(ip.isFinished), []);
+  useEffect(() => {
+    setCurrent(data[currentIndex]);
+    let ain = answers.findIndex(
+      (answer) => answer.questionId === data[currentIndex].id
+    );
+    if (!answers[ain] || !answers || ain < 0 || answers.length == 0) {
+      setSelectedItem(data[currentIndex].teams[0].teamId);
+    } else setSelectedItem(answers[ain].team.teamId);
+  }, [currentIndex]);
 
+  function saveStep({ team, questionId }: Answer) {
+    const existingAnswerIndex = answers.findIndex(
+      (answer) => answer.questionId === questionId
+    );
+
+    if (existingAnswerIndex !== -1) {
+      const updatedAnswers = [...answers];
+      updatedAnswers[existingAnswerIndex] = {
+        ...updatedAnswers[existingAnswerIndex],
+        team: {
+          name: team.name,
+          icon: team.icon,
+          teamId: team.teamId,
+        },
+      };
+      setAnswers(updatedAnswers);
+    } else {
+      setAnswers((prevAnswers) => [...prevAnswers, { questionId, team }]);
+    }
+  }
+
+  function nextStep() {
     if (currentIndex == data.length - 1) return;
+    if (selectedItem == undefined) return;
+
+    let team =
+      data[currentIndex].teams.find((team) => team.teamId === selectedItem) ||
+      data[currentIndex].teams[0];
+    saveStep({
+      team,
+      questionId: current.id,
+    });
     let curr = currentIndex + 1 > data.length ? 0 : currentIndex + 1;
+
     setCurrentIndex(curr);
     // setCurrent(data[curr]);
   }
   function backStep() {
-    setSelectedItem(undefined);
-
     if (currentIndex == 0) return;
     let curr = currentIndex - 1 < 0 ? 0 : currentIndex - 1;
     setCurrentIndex(curr);
     // setCurrent(data[curr]);
   }
-  useEffect(() => setFinished(ip.isFinished), []);
-  useEffect(() => setCurrent(data[currentIndex]), [currentIndex]);
 
-  function onSelect(teamIndex: number) {
-    setSelectedItem(teamIndex);
+  function onSelect(teamId: number) {
+    setSelectedItem(teamId);
   }
-  function onFinish() {
+  async function onFinish() {
     setFinished(true);
+    console.log(answers);
+    let res = await axios.post(
+      "/api/db/save",
+      {
+        body: { data: answers },
+      },
+      { withCredentials: true }
+    );
+    if(res.status===200 && res?.data?.data?.status) return router.reload();
+    console.log(res);
   }
 
   if (finished) {
@@ -390,7 +524,7 @@ export default function Home({ ip }: any) {
           <div className="justify-center items-start space-y-[10px]">
             {data.map(({ title }: any, _index: any) => (
               <div
-                onClick={() => setCurrentIndex(_index)}
+                // onClick={() => setCurrentIndex(_index)}
                 className={`cursor-pointer font-semibold flex items-center gap-2 ${
                   _index == currentIndex ? " opacity-100 " : " opacity-50"
                 }`}
@@ -416,12 +550,12 @@ export default function Home({ ip }: any) {
           </div>
 
           <div className="grid grid-cols-2 gap-16">
-            {current.teams.map(({ name, icon }: any, index: any) => (
+            {current.teams.map(({ name, icon, teamId }: any, index: any) => (
               <div
                 key={index}
                 className="bg-gray-300 w-[300px] h-[300px] rounded-xl items-end overflow-hidden transition-all"
               >
-                {selectedItem == index && (
+                {selectedItem == teamId && (
                   <div className="absolute bg-black rounded-full p-2 scale-50 flex ">
                     <svg
                       // className="bg-white"
@@ -438,7 +572,7 @@ export default function Home({ ip }: any) {
                   </div>
                 )}
                 <button
-                  onClick={() => onSelect(index)}
+                  onClick={() => onSelect(teamId)}
                   className="h-full w-full font-semibold flex flex-col justify-center items-center"
                 >
                   <Image
