@@ -412,7 +412,7 @@ export async function getServerSideProps({ req }: any) {
 const myip = requestIp.getClientIp(req);
   if(!myip) return;
   const hashed = await bcrypt.hash(myip,10)
-  console.log(hashed)
+
   const res = await axios.post(`https://flank-vote.vercel.app/api/hello`, {
     forward: myip,
   });
@@ -422,13 +422,14 @@ const myip = requestIp.getClientIp(req);
   return {
     props: {
       myip,
+      hashed,
       status:
         res?.status === 200 && !res?.data?.error ? res.data : null,
     },
   };
 }
 
-export default function Home({ myip, status }: any) {
+export default function Home({ myip,hashed, status }: any) {
   const router = useRouter();
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [finished, setFinished] = useState(false);
@@ -439,6 +440,7 @@ export default function Home({ myip, status }: any) {
 
   useEffect(() => {
     console.log("Myip: ", myip);
+      console.log("hashed: ",hashed)
     setFinished(status.isFinished);
   }, []);
   useEffect(() => {
