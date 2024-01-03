@@ -409,6 +409,7 @@ const data = [
 export async function getServerSideProps() {
   // Fetch data from external API
   const res = await axios.get(`https://flank-vote.vercel.app/api/hello`);
+   console.log(res.data)
   // const data = await res.json();
 
   // Pass data to the page via props
