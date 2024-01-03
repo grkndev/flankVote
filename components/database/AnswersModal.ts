@@ -2,12 +2,12 @@ import mongoose from 'mongoose'
 
 export interface Answers extends mongoose.Document {
   user: string
-  answers: string[]
+  answers: any
 }
 
 /* PetSchema will correspond to a collection in your MongoDB database. */
 const UserAnswers = new mongoose.Schema<Answers>({
-      user: {
+  user: {
     type: String,
     required: [true, 'Please provide a user.'],
   },
@@ -15,7 +15,7 @@ const UserAnswers = new mongoose.Schema<Answers>({
     type: Array,
     required: [true, "Please provide the Answer data"],
   },
-  
+
 })
 
 export default mongoose.models.UserAnswers || mongoose.model<Answers>('UserAnswers', UserAnswers)

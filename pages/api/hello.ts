@@ -5,9 +5,9 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import requestIp from "request-ip";
 
 type Data = {
-  detectedIp: string | null;
-  isFinished: boolean;
-  error: boolean;
+  detectedIp?: string | null;
+  isFinished?: boolean;
+  error?: boolean;
 };
 
 export default async function handler(

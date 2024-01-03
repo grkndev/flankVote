@@ -6,19 +6,20 @@ import requestIp from "request-ip";
 type Data = {
       status: boolean;
       message: string;
+      error?: boolean;
 };
 export default async function handler(
       req: NextApiRequest,
       res: NextApiResponse<Data>
 ) {
       await dbConnect();
-      if (req.method !== "POST") return res.status(500).json({ error: true, message: "Invalid Method" })
+      if (req.method !== "POST") return res.status(500).json({ status:false, error: true, message: "Invalid Method" })
 
       const data = req.body
       const detectedIp = requestIp.getClientIp(req);
 
       const user = await AnswersModal.findOne({ user: detectedIp })
-      if (user) return res.status(200).json({ error: true, message: "User already voted" })
+      if (user) return res.status(200).json({ status:false, error: true, message: "User already voted" })
 
       new AnswersModal({
             user: detectedIp,
