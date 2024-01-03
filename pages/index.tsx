@@ -409,7 +409,8 @@ const data = [
 
 export async function getServerSideProps({ req }: any) {
   // Fetch data from external API
-  const myip = requestIp.getClientIp(req);
+const myip = requestIp.getClientIp(req);
+  if(!myip) return;
   const hashed = await bcrypt.hash(myip,10)
   console.log(hashed)
   const res = await axios.post(`https://flank-vote.vercel.app/api/hello`, {
