@@ -3,7 +3,7 @@ import { Montserrat } from "next/font/google";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-
+import requestIp from "request-ip";
 const montserrat = Montserrat({ subsets: ["latin"] });
 type Answer = {
   questionId: number;
@@ -406,17 +406,18 @@ const data = [
   },
 ];
 
-export async function getServerSideProps() {
+export async function getServerSideProps({req}) {
   // Fetch data from external API
   const res = await axios.get(`https://flank-vote.vercel.app/api/hello`);
+  const myip = requestIp.getClientIp(req);
    console.log(res.data)
   // const data = await res.json();
 
   // Pass data to the page via props
-  return { props: { ip: res?.status === 200 ? res.data : null } };
+  return { props: { myip,ip: res?.status === 200 ? res.data : null } };
 }
 
-export default function Home({ ip }: any) {
+export default function Home({ myip,ip }: any) {
   const router = useRouter();
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [finished, setFinished] = useState(false);
@@ -425,7 +426,7 @@ export default function Home({ ip }: any) {
 
   const [selectedItem, setSelectedItem] = useState<number>();
 
-  useEffect(() => {console.log(ip); setFinished(ip.isFinished);}, []);
+  useEffect(() => {console.log("Myip: ",myip); console.log("IP: ",ip); setFinished(ip.isFinished);}, []);
   useEffect(() => {
     setCurrent(data[currentIndex]);
     let ain = answers.findIndex(
