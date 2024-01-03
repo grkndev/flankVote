@@ -425,7 +425,7 @@ export default function Home({ ip }: any) {
 
   const [selectedItem, setSelectedItem] = useState<number>();
 
-  useEffect(() => setFinished(ip.isFinished), []);
+  useEffect(() => {console.log(ip); setFinished(ip.isFinished);}, []);
   useEffect(() => {
     setCurrent(data[currentIndex]);
     let ain = answers.findIndex(
