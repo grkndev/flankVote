@@ -409,7 +409,7 @@ const data = [
 export async function getServerSideProps({ req }: any) {
   // Fetch data from external API
   const myip = requestIp.getClientIp(req);
-  const res = await axios.post(`http://localhost:3000/api/hello`, {
+  const res = await axios.post(`https://flank-vote.vercel.app/api/hello`, {
     forward: myip,
   });
   console.log(res.data);
