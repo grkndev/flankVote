@@ -14,14 +14,17 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
- try{
-  const detectedIp = requestIp.getClientIp(req);
-  await dbConnect();
-  const isFinished = await AnswersModal.findOne({user:detectedIp}) ? true : false
-  res.status(200).json({ detectedIp, isFinished });
-  return;
- }
- catch{
-  return res.status(200).json({error:true})
- }
+  if (req.method !== "POST") return res.status(200).json({ error: true })
+  try {
+    const detectedIp = req.body.forward;
+
+    await dbConnect();
+    const isFinished = await AnswersModal.findOne({ user: detectedIp }) ? true : false
+
+    res.status(200).json({ detectedIp, isFinished });
+    return;
+  }
+  catch {
+    return res.status(200).json({ error: true })
+  }
 }

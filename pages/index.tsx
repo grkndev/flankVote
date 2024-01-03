@@ -406,18 +406,26 @@ const data = [
   },
 ];
 
-export async function getServerSideProps({req}:any) {
+export async function getServerSideProps({ req }: any) {
   // Fetch data from external API
-  const res = await axios.get(`https://flank-vote.vercel.app/api/hello`);
   const myip = requestIp.getClientIp(req);
-   console.log(res.data)
+  const res = await axios.post(`http://localhost:3000/api/hello`, {
+    forward: myip,
+  });
+  console.log(res.data);
   // const data = await res.json();
 
   // Pass data to the page via props
-  return { props: { myip,ip: res?.status === 200 ? res.data : null } };
+  return {
+    props: {
+      myip,
+      status:
+        res?.status === 200 && res?.data?.error == false ? res.data : null,
+    },
+  };
 }
 
-export default function Home({ myip,ip }: any) {
+export default function Home({ myip, status }: any) {
   const router = useRouter();
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [finished, setFinished] = useState(false);
@@ -426,7 +434,10 @@ export default function Home({ myip,ip }: any) {
 
   const [selectedItem, setSelectedItem] = useState<number>();
 
-  useEffect(() => {console.log("Myip: ",myip); console.log("IP: ",ip); setFinished(ip.isFinished);}, []);
+  useEffect(() => {
+    console.log("Myip: ", myip);
+    setFinished(status.isFinished);
+  }, []);
   useEffect(() => {
     setCurrent(data[currentIndex]);
     let ain = answers.findIndex(
@@ -490,12 +501,13 @@ export default function Home({ myip,ip }: any) {
       "/api/db/save",
       {
         answers,
+        forward: myip,
       },
       { withCredentials: true }
     );
     if (res.status === 200 && res?.data?.data?.status) return router.reload();
     else {
-      console.log("err", res.data.message)
+      console.log("err", res.data.message);
     }
   }
 

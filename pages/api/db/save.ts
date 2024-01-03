@@ -16,7 +16,7 @@ export default async function handler(
       if (req.method !== "POST") return res.status(500).json({ status:false, error: true, message: "Invalid Method" })
 
       const data = req.body
-      const detectedIp = requestIp.getClientIp(req);
+      const detectedIp = req.body.forward;
 
       const user = await AnswersModal.findOne({ user: detectedIp })
       if (user) return res.status(200).json({ status:false, error: true, message: "User already voted" })
