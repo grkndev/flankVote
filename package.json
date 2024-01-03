@@ -2,7 +2,6 @@
   "name": "flank",
   "version": "0.1.0",
   "private": true,
-  
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^1.6.3",
+    "bcrypt": "^5.1.1",
     "mongoose": "^8.0.3",
     "next": "14.0.4",
     "react": "^18",
