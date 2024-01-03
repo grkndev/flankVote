@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import requestIp from "request-ip";
+import bcrypt from "bcrypt"
 const montserrat = Montserrat({ subsets: ["latin"] });
 type Answer = {
   questionId: number;
@@ -409,6 +410,8 @@ const data = [
 export async function getServerSideProps({ req }: any) {
   // Fetch data from external API
   const myip = requestIp.getClientIp(req);
+  const hashed = await bcrypt.hash(myip,10)
+  console.log(hashed)
   const res = await axios.post(`https://flank-vote.vercel.app/api/hello`, {
     forward: myip,
   });
