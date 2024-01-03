@@ -412,7 +412,6 @@ export async function getServerSideProps({ req }: any) {
   const res = await axios.post(`https://flank-vote.vercel.app/api/hello`, {
     forward: myip,
   });
-  console.log(res.data);
   // const data = await res.json();
 
   // Pass data to the page via props
@@ -420,7 +419,7 @@ export async function getServerSideProps({ req }: any) {
     props: {
       myip,
       status:
-        res?.status === 200 && res?.data?.error == false ? res.data : null,
+        res?.status === 200 && !res?.data?.error ? res.data : null,
     },
   };
 }
