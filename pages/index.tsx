@@ -405,10 +405,9 @@ const data = [
     title: "Yılın En Heyecanlandıran Türk Transfer Hamlesi",
   },
 ];
-
 export async function getServerSideProps() {
   // Fetch data from external API
-  const res = await axios.get(`/api/hello`);
+  const res = await axios.get(`https://flank-vote.vercel.app/api/hello`);
   // const data = await res.json();
 
   // Pass data to the page via props
