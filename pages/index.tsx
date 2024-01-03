@@ -493,8 +493,7 @@ export default function Home({ ip }: any) {
     );
     if (res.status === 200 && res?.data?.data?.status) return router.reload();
     else {
-      console.log("err")
-      router.reload() 
+      console.log("err", res.data.message)
     }
   }
 
