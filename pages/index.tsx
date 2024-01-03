@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Montserrat } from "next/font/google";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 type Answer = {
@@ -405,18 +405,18 @@ const data = [
     title: "Yılın En Heyecanlandıran Türk Transfer Hamlesi",
   },
 ];
+
 export async function getServerSideProps() {
   // Fetch data from external API
-  const res = await axios.get(`https://flank-vote.vercel.app/api/hello`);
+  const res = await axios.get(`http://localhost:3000/api/hello`);
   // const data = await res.json();
 
   // Pass data to the page via props
   return { props: { ip: res?.status === 200 ? res.data : null } };
 }
 
-
 export default function Home({ ip }: any) {
-  const router = useRouter()
+  const router = useRouter();
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [finished, setFinished] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -484,16 +484,18 @@ export default function Home({ ip }: any) {
   }
   async function onFinish() {
     setFinished(true);
-    console.log(answers);
     let res = await axios.post(
       "/api/db/save",
       {
-        body: { data: answers },
+        answers,
       },
       { withCredentials: true }
     );
-    if(res.status===200 && res?.data?.data?.status) return router.reload();
-    console.log(res);
+    if (res.status === 200 && res?.data?.data?.status) return router.reload();
+    else {
+      console.log("err")
+      router.reload() 
+    }
   }
 
   if (finished) {
