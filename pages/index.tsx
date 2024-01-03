@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import requestIp from "request-ip";
+<<<<<<< HEAD
+import bcrypt from "bcrypt";
+=======
 import bcrypt from "bcrypt"
+>>>>>>> d41b87b295531bd90442968f8cdea9476952fa57
 const montserrat = Montserrat({ subsets: ["latin"] });
 type Answer = {
   questionId: number;
@@ -409,6 +413,28 @@ const data = [
 
 export async function getServerSideProps({ req }: any) {
   // Fetch data from external API
+<<<<<<< HEAD
+  const myip = requestIp.getClientIp(req);
+  if (!myip) return;
+  // const hashed = await bcrypt.hash(myip,10)
+
+  const res = await axios.post(`https://flank-vote.vercel.app/api/hello`, {
+    forward: myip,
+  });
+  return {
+    props: {
+      myip,
+      status: res?.status === 200 && !res?.data?.error ? res.data : null,
+    },
+  };
+}
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+export default function Home({ myip, status }: any) {
+  const router = useRouter();
+  const [answers, setAnswers] = useState<Answer[]>([]);
+  const [email, setEmail] = useState("");
+  const [validPage, setValidPage] = useState(false);
+=======
 const myip = requestIp.getClientIp(req);
   if(!myip) return;
   const hashed = await bcrypt.hash(myip,10)
@@ -432,6 +458,7 @@ const myip = requestIp.getClientIp(req);
 export default function Home({ myip,hashed, status }: any) {
   const router = useRouter();
   const [answers, setAnswers] = useState<Answer[]>([]);
+>>>>>>> d41b87b295531bd90442968f8cdea9476952fa57
   const [finished, setFinished] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [current, setCurrent] = useState(data[currentIndex]);
@@ -440,7 +467,10 @@ export default function Home({ myip,hashed, status }: any) {
 
   useEffect(() => {
     console.log("Myip: ", myip);
+<<<<<<< HEAD
+=======
       console.log("hashed: ",hashed)
+>>>>>>> d41b87b295531bd90442968f8cdea9476952fa57
     setFinished(status.isFinished);
   }, []);
   useEffect(() => {
@@ -507,6 +537,10 @@ export default function Home({ myip,hashed, status }: any) {
       {
         answers,
         forward: myip,
+<<<<<<< HEAD
+        mail:email
+=======
+>>>>>>> d41b87b295531bd90442968f8cdea9476952fa57
       },
       { withCredentials: true }
     );
@@ -531,7 +565,7 @@ export default function Home({ myip,hashed, status }: any) {
         </h1>
       </div>
     );
-  } else {
+  } else if (email && emailRegex.test(email) && validPage) {
     return (
       <div
         className={`flex items-center justify-between mx-32 h-screen ${montserrat.className}`}
@@ -654,6 +688,41 @@ export default function Home({ myip,hashed, status }: any) {
                   d="M7.19 19.31a1.48 1.48 0 0 1-1.06-.43 1.5 1.5 0 0 1 0-2.13L16.75 6.13a1.5 1.5 0 1 1 2.12 2.12L8.25 18.88a1.52 1.52 0 0 1-1.06.43Z"
                 />
               </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="flex flex-col justify-center items-center">
+        <div>
+          <Image src={"/logo.png"} width={470} height={"100"} alt="logo" />
+        </div>
+        <div className="justify-center items-center flex flex-col gap-10 m-10 p-10 rounded bg-gray-300 ">
+          <div>
+            <h1 className="text-4xl font-bold">
+              Flank Espor Ödüllerine hoşgeldiniz.
+            </h1>
+            <h1 className="text-3xl font-bold">
+              Devam etmek için E-posta adresinizi giriniz
+            </h1>
+          </div>
+          <div className="w-full flex flex-col gap-5">
+            <input
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+              className="bg-gray-100 flex w-full py-2 px-4 rounded outline-none"
+            />
+            <button
+              onClick={() => {
+                emailRegex.test(email)
+                  ? setValidPage(true)
+                  : setValidPage(false);
+              }}
+              className="w-full bg-black py-2 text-white rounded font-medium"
+            >
+              Onayla
             </button>
           </div>
         </div>
