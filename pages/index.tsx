@@ -408,12 +408,13 @@ const data = [
 
 export async function getServerSideProps() {
   // Fetch data from external API
-  const res = await fetch(`http://localhost:3000/api/hello`);
-  const data = await res.json();
+  const res = await axios.get(`/api/hello`);
+  // const data = await res.json();
 
   // Pass data to the page via props
-  return { props: { ip: data } };
+  return { props: { ip: res?.status === 200 ? res.data : null } };
 }
+
 
 export default function Home({ ip }: any) {
   const router = useRouter()
