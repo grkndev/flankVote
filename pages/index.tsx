@@ -406,7 +406,7 @@ const data = [
   },
 ];
 
-export async function getServerSideProps({req}) {
+export async function getServerSideProps({req}:any) {
   // Fetch data from external API
   const res = await axios.get(`https://flank-vote.vercel.app/api/hello`);
   const myip = requestIp.getClientIp(req);
