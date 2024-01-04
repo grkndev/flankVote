@@ -545,8 +545,8 @@ export default function Home({ myip, status }: any) {
         <div className="w-full h-full flex justify-center items-center relative">
           <Image
             src={"/logo.png"}
-            layout="fill"
-            objectFit="contain"
+            //layout="fill"
+            //objectFit="contain"
             className="w-full h-full"
             alt="logo"
           />
