@@ -4,11 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import requestIp from "request-ip";
-<<<<<<< HEAD
 import bcrypt from "bcrypt";
-=======
-import bcrypt from "bcrypt"
->>>>>>> d41b87b295531bd90442968f8cdea9476952fa57
 const montserrat = Montserrat({ subsets: ["latin"] });
 type Answer = {
   questionId: number;
@@ -19,6 +15,32 @@ type Answer = {
   };
 };
 const data = [
+  {
+    id: 100,
+    teams: [
+      {
+        teamId: 30,
+        name: "Wo0t",
+        icon: "https://liquipedia.net/commons/images/8/82/Fire_Flux_Esports_Wo0t.png",
+      },
+      {
+        teamId: 31,
+        name: "yetujey",
+        icon: "https://liquipedia.net/commons/images/0/0c/Yetujey_at_Red_Bull_Home_Ground_4.jpg",
+      },
+      {
+        teamId: 322,
+        name: "Izzy",
+        icon: "https://owcdn.net/img/63e102863ffed.png",
+      },
+      {
+        teamId: 33,
+        name: "w0zzip",
+        icon: "https://owcdn.net/img/655c32678ee1c.png",
+      },
+    ],
+    title: "Yılın Starboy'u",
+  },
   {
     id: 1,
     teams: [
@@ -413,7 +435,6 @@ const data = [
 
 export async function getServerSideProps({ req }: any) {
   // Fetch data from external API
-<<<<<<< HEAD
   const myip = requestIp.getClientIp(req);
   if (!myip) return;
   // const hashed = await bcrypt.hash(myip,10)
@@ -434,31 +455,6 @@ export default function Home({ myip, status }: any) {
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [email, setEmail] = useState("");
   const [validPage, setValidPage] = useState(false);
-=======
-const myip = requestIp.getClientIp(req);
-  if(!myip) return;
-  const hashed = await bcrypt.hash(myip,10)
-
-  const res = await axios.post(`https://flank-vote.vercel.app/api/hello`, {
-    forward: myip,
-  });
-  // const data = await res.json();
-
-  // Pass data to the page via props
-  return {
-    props: {
-      myip,
-      hashed,
-      status:
-        res?.status === 200 && !res?.data?.error ? res.data : null,
-    },
-  };
-}
-
-export default function Home({ myip,hashed, status }: any) {
-  const router = useRouter();
-  const [answers, setAnswers] = useState<Answer[]>([]);
->>>>>>> d41b87b295531bd90442968f8cdea9476952fa57
   const [finished, setFinished] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [current, setCurrent] = useState(data[currentIndex]);
@@ -467,10 +463,6 @@ export default function Home({ myip,hashed, status }: any) {
 
   useEffect(() => {
     console.log("Myip: ", myip);
-<<<<<<< HEAD
-=======
-      console.log("hashed: ",hashed)
->>>>>>> d41b87b295531bd90442968f8cdea9476952fa57
     setFinished(status.isFinished);
   }, []);
   useEffect(() => {
@@ -537,10 +529,7 @@ export default function Home({ myip,hashed, status }: any) {
       {
         answers,
         forward: myip,
-<<<<<<< HEAD
-        mail:email
-=======
->>>>>>> d41b87b295531bd90442968f8cdea9476952fa57
+        mail: email,
       },
       { withCredentials: true }
     );
@@ -553,8 +542,14 @@ export default function Home({ myip,hashed, status }: any) {
   if (finished) {
     return (
       <div className="h-screen w-screen flex flex-col justify-center items-center gap-3 ">
-        <div>
-          <Image src={"/logo.png"} width={470} height={"100"} alt="logo" />
+        <div className="w-full h-full flex justify-center items-center relative">
+          <Image
+            src={"/logo.png"}
+            layout="fill"
+            objectFit="contain"
+            className="w-full h-full"
+            alt="logo"
+          />
         </div>
         <h1 className="font-bold text-4xl">
           Düşünceleriniz bizim için önemli :)

@@ -7,7 +7,9 @@ const nextConfig = {
   },
   images:{
     domains:[
-      "upload.wikimedia.org"
+      "upload.wikimedia.org",
+      "liquipedia.net",
+      "owcdn.net"
     ]
   }
 }
